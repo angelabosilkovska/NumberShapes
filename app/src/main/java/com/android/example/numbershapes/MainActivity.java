@@ -63,25 +63,28 @@ public class MainActivity extends AppCompatActivity {
 
         input = (EditText) findViewById(R.id.editTextNumberDecimal);
 
-        Number myNumber = new Number();
-        myNumber.number = Integer.parseInt(input.getText().toString());
+        String message;
 
-        String message = input.getText().toString();
-
-        if (myNumber.isSquare() && myNumber.isTriangular()) {
-            message +=  " is square and triangular";
-        }
-        else if (myNumber.isSquare()) {
-            message +=  " is square";
-        }
-        else if (myNumber.isTriangular()) {
-            message +=  " is triangular";
+        if (input.getText().toString().isEmpty()) {
+            message = "Enter a number";
         }
         else {
-            message +=  " is not square nor triangular";
+            Number myNumber = new Number();
+            myNumber.number = Integer.parseInt(input.getText().toString());
+
+            message = input.getText().toString();
+
+            if (myNumber.isSquare() && myNumber.isTriangular()) {
+                message += " is square and triangular";
+            } else if (myNumber.isSquare()) {
+                message += " is square";
+            } else if (myNumber.isTriangular()) {
+                message += " is triangular";
+            } else {
+                message += " is not square nor triangular";
+            }
         }
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         System.out.println(message);
-
     }
 }
